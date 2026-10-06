@@ -15,7 +15,7 @@ st.set_page_config(
 if "VT_API_KEY" in st.secrets:
     VT_API_KEY = st.secrets["VT_API_KEY"].strip()
 else:
-    VT_API_KEY = "F2886d1681183e7c787ff1bc58227848bbce0254ebf100a98a03b22323ba3a58".strip()
+    VT_API_KEY = "f2886d1681183e7c787ff1bc58227848bbce0254ebf100a98a03b22323ba3a58".strip()
 
 def heuristic_check(url):
     """Local offline inspection algorithm."""
