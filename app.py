@@ -12,11 +12,10 @@ st.set_page_config(
 )
 
 # --- SECURE API KEY MANAGEMENT ---
-# The app checks the cloud for a hidden secure key. If it doesn't find one (like when running on your local PC), it uses the hardcoded key.
 if "VT_API_KEY" in st.secrets:
-    VT_API_KEY = st.secrets["VT_API_KEY"]
+    VT_API_KEY = st.secrets["VT_API_KEY"].strip()
 else:
-    VT_API_KEY = "F2886d1681183e7c787ff1bc58227848bbce0254ebf100a98a03b22323ba3a58"
+    VT_API_KEY = "F2886d1681183e7c787ff1bc58227848bbce0254ebf100a98a03b22323ba3a58".strip()
 
 def heuristic_check(url):
     """Local offline inspection algorithm."""
