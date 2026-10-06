@@ -49,7 +49,8 @@ def scan_url(url):
     headers = {"x-apikey": VT_API_KEY}
 
     try:
-        response = requests.get(api_endpoint, headers=headers, timeout=4)
+        # Increased timeout to 15 seconds for slower cloud servers
+        response = requests.get(api_endpoint, headers=headers, timeout=15)
         
         if response.status_code == 200:
             stats = response.json()['data']['attributes']['last_analysis_stats']
@@ -59,12 +60,12 @@ def scan_url(url):
         else:
             # URL not found in database or API error -> run heuristic fallback
             score, flags = heuristic_check(url)
-            return "heuristic", score, flags, "URL not in database or network restricted."
+            return "heuristic", score, flags, f"API Response Code: {response.status_code}"
             
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as e:
         # Offline network issue -> run heuristic fallback
         score, flags = heuristic_check(url)
-        return "heuristic", score, flags, "Internet connection offline."
+        return "heuristic", score, flags, "Cloud network timeout."
 
 # --- WEB INTERFACE ---
 st.title("🛡️ Cyber Threat Analyzer")
