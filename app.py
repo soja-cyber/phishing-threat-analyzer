@@ -68,7 +68,7 @@ def scan_url(url):
 
 # --- WEB INTERFACE ---
 st.title("🛡️ Cyber Threat Analyzer")
-st.caption("SIWES Cybersecurity Project | Real-Time Phishing & Fraud Detector")
+st.caption("Real-Time Phishing & Fraud Detector")
 
 st.markdown("---")
 
